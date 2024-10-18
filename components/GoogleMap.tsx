@@ -1,11 +1,11 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef} from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
 const GoogleMap = () => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    let userLocation: google.maps.LatLngLiteral = {
+    var userLocation: google.maps.LatLngLiteral = {
       lat: 0,
       lng: 0,
     };
@@ -51,11 +51,11 @@ const GoogleMap = () => {
         position: centerLocation,
       });
 
-      var markers: Array<google.maps.marker.AdvancedMarkerElement> = []; //some array;
+      let markers: Array<google.maps.marker.AdvancedMarkerElement> = []; //some array;
       markers.push(userMarker);
       markers.push(centerMarker);
 
-      var bounds = new google.maps.LatLngBounds();
+      let bounds = new google.maps.LatLngBounds();
       for (let i = 0; i < markers.length; i++) {
         bounds.extend(markers[i].position as google.maps.LatLngLiteral);
       }

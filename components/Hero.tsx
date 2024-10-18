@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useTransform, useScroll, motion } from "framer-motion";
 import GoogleMap from "./GoogleMap";
 
@@ -9,7 +9,7 @@ const Hero = () => {
   const { scrollYProgress } = useScroll({ target: targetRef });
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
 
-  const [ip, setIP] = useState<string>("none");
+  // const [ip, setIP] = useState<string>("none");
 
   useEffect(() => {
     const fetchLocation = async () => {

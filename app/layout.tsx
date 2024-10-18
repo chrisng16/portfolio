@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Background from "@/components/Background";
-import { useState } from "react";
+// import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 

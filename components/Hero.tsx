@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTransform, useScroll, motion } from "framer-motion";
 import GoogleMap from "./GoogleMap";
 
@@ -28,7 +28,7 @@ const Hero = () => {
         Math.sin(dLng / 2) *
         Math.sin(dLng / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const d = (R * c)/1.6; // Distance in km
+    const d = (R * c) / 1.6; // Distance in km
     return Math.round(d);
   }
 
@@ -51,7 +51,7 @@ const Hero = () => {
     fetchLocation().then((res) => {
       onLoadComplete(res as google.maps.LatLngLiteral);
     });
-  }, []);
+  }, [onLoadComplete]);
 
   return (
     <div ref={targetRef} className="relative h-[200vh]">

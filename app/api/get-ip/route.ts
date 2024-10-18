@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Utility function to get the IP address
-const getIpAddress = async (req: NextRequest): Promise<Record<string, any> | null> => {
+const getIpAddress: (req: NextRequest) => Promise<google.maps.LatLngLiteral> = async (req: NextRequest) => {
     // The 'x-forwarded-for' header is a common way to get the real IP when behind a proxy
     const xForwardedFor = req.headers.get('x-forwarded-for');
-    let userIP, lat, lng
+    const userLocation: google.maps.LatLngLiteral = {
+        lat: 0,
+        lng: 0
+    }
     if (xForwardedFor) {
+        let userIP
         // The x-forwarded-for header can contain multiple IPs (comma-separated), get the first one
         userIP = xForwardedFor.split(',')[0].trim()
         if (userIP.substring(0, 7) == "::ffff:") {
@@ -14,12 +18,11 @@ const getIpAddress = async (req: NextRequest): Promise<Record<string, any> | nul
 
         console.log(userIP)
         const locationData = await fetch(`http://ip-api.com/json/${userIP}`).then(res => res.json())
-        lat = locationData.lat
-        lng = locationData.lon
+        userLocation.lat = locationData.lat
+        userLocation.lng = locationData.lon
     }
 
-    // Fallback to `req.ip` if no 'x-forwarded-for' header exists (depends on the environment)
-    return { lat, lng };;
+    return userLocation;;
 };
 
 export async function GET(req: NextRequest) {

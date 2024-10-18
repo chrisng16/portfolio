@@ -5,7 +5,7 @@ import { Loader } from "@googlemaps/js-api-loader";
 const GoogleMap = () => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    var userLocation: google.maps.LatLngLiteral = {
+    let userLocation: google.maps.LatLngLiteral = {
       lat: 0,
       lng: 0,
     };
@@ -51,11 +51,11 @@ const GoogleMap = () => {
         position: centerLocation,
       });
 
-      let markers: Array<google.maps.marker.AdvancedMarkerElement> = []; //some array;
+      const markers: Array<google.maps.marker.AdvancedMarkerElement> = []; //some array;
       markers.push(userMarker);
       markers.push(centerMarker);
 
-      let bounds = new google.maps.LatLngBounds();
+      const bounds = new google.maps.LatLngBounds();
       for (let i = 0; i < markers.length; i++) {
         bounds.extend(markers[i].position as google.maps.LatLngLiteral);
       }

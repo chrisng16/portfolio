@@ -66,7 +66,7 @@ const Hero = () => {
                       Hi, I am Nguyen Nguyen 👋
                     </h2>
                     <h3 className="text-lg leading-tight">
-                      I'm a detail oriented, user-minded software engineer based
+                      I`&apos;`m a detail oriented, user-minded software engineer based
                       in Los Angeles, CA
                     </h3>
                   </div>
@@ -76,7 +76,7 @@ const Hero = () => {
                       and efficient solution utilizing modern techlogies like
                       Typescript, Tailwind CSS, and Next.js. I constantly ask
                       myself the question of what can be improved to enhance
-                      users' experiences. And I truly believe that mindset of
+                      users`&apos;` experiences. And I truly believe that mindset of
                       constant improvement that makes me better everyday.
                     </p>
                     {/* <h3 className="text-lg">

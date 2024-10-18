@@ -44,18 +44,32 @@ const GoogleMap = ({
       };
 
       const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
+      const userMarkerContent = document.createElement("div");
+      userMarkerContent.className =
+        "bg-white rounded-lg py-2 px-4 mb-2 text-lg relative text-black after:absolute after:-translate-x-1/2 after:translate-y-0 after:w-0 after:h-0 after:border-t-8 after:border-t-white after:border-x-8 after:border-x-transparent after:border-solid after:left-1/2 after:top-full";
+      userMarkerContent.textContent = "you";
       const userMarker = new AdvancedMarkerElement({
         map,
         position: userLocation as google.maps.LatLngLiteral,
+        title: "you",
+        content: userMarkerContent,
       });
-      const centerMarker = new AdvancedMarkerElement({
+
+      const myMarkerContent = document.createElement("div");
+      myMarkerContent.className =
+        "bg-white rounded-lg py-2 px-4 mb-2 text-lg relative text-black after:absolute after:-translate-x-1/2 after:translate-y-0 after:w-0 after:h-0 after:border-t-8 after:border-t-white after:border-x-8 after:border-x-transparent after:border-solid after:left-1/2 after:top-full";
+      myMarkerContent.textContent = "me";
+
+      const myMarker = new AdvancedMarkerElement({
         map,
         position: centerLoc,
+        title: "me",
+        content: myMarkerContent,
       });
 
       const markers: Array<google.maps.marker.AdvancedMarkerElement> = []; //some array;
       markers.push(userMarker);
-      markers.push(centerMarker);
+      markers.push(myMarker);
 
       const bounds = new google.maps.LatLngBounds();
       for (let i = 0; i < markers.length; i++) {

@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/components/Header";
+import { Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes";
+import Background from "@/components/Background";
+import { useState } from "react";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +19,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` ${inter.className} antialiased text-black dark:text-white scroll-smooth`}
       >
-        {children}
+        <ThemeProvider attribute="class">
+          {/* <div className="fixed inset-0 z-20 transition dur lg:absolute bg-[radial-gradient(circle_300px_at_90%_200px,rgba(29,78,216,0.15),transparent)]"></div> */}
+          <Header />
+          <Background />
+          <div className="flex mx-auto w-full">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

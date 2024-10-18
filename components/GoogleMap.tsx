@@ -5,7 +5,7 @@ import { Loader } from "@googlemaps/js-api-loader";
 const GoogleMap = () => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    let userLocation: google.maps.LatLngLiteral = {
+    const userLocation: google.maps.LatLngLiteral = {
       lat: 0,
       lng: 0,
     };

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { SetStateAction, useEffect, useRef, useState } from "react";
 import { useTransform, useScroll, motion } from "framer-motion";
 import GoogleMap from "./GoogleMap";
 
@@ -8,15 +8,49 @@ const Hero = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [userLocation, setUserLocation] =
+    useState<google.maps.LatLngLiteral | null>(null);
+  const [distance, setDistance] = useState<number>(0);
 
-  // const [ip, setIP] = useState<string>("none");
+  function calculateDistanceFromUser(userLoc: google.maps.LatLngLiteral) {
+    const R = 6371; // Radius of the earth in km
+    const myLoc: google.maps.LatLngLiteral = {
+      lat: 34.0138,
+      lng: -118.4405,
+    };
+    const dLat = deg2rad(myLoc.lat - userLoc.lat); // deg2rad below
+    const dLng = deg2rad(myLoc.lng - userLoc.lng);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(myLoc.lat)) *
+        Math.cos(deg2rad(userLoc.lat)) *
+        Math.sin(dLng / 2) *
+        Math.sin(dLng / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = (R * c)/1.6; // Distance in km
+    return Math.round(d);
+  }
+
+  function deg2rad(deg: number) {
+    return deg * (Math.PI / 180);
+  }
+
+  const onLoadComplete = (userLoc: google.maps.LatLngLiteral) => {
+    setUserLocation(userLoc);
+    setIsLoading(false);
+    setDistance(calculateDistanceFromUser(userLoc));
+  };
 
   useEffect(() => {
     const fetchLocation = async () => {
-      const { ip } = await fetch("/api/get-ip").then((res) => res.json());
-      console.log("from Hero", ip);
+      setIsLoading(true);
+      const { location } = await fetch("/api/get-ip").then((res) => res.json());
+      return location;
     };
-    fetchLocation();
+    fetchLocation().then((res) => {
+      onLoadComplete(res as google.maps.LatLngLiteral);
+    });
   }, []);
 
   return (
@@ -59,15 +93,19 @@ const Hero = () => {
                   alt="Avatar"
                   className="size-60 rounded-lg border-4 border-zinc-400"
                 /> */}
-                <GoogleMap />
+                {isLoading || userLocation === null ? (
+                  <div>Loading...</div>
+                ) : (
+                  <GoogleMap userLocation={userLocation} />
+                )}
                 <div className="font-leagueSpartan flex flex-col">
                   <div className="flex flex-col pb-1">
                     <h2 className="font-medium text-xl">
-                      Hi, I am Nguyen Nguyen 👋
+                      {`Hello stranger from ${distance} miles away, I am Nguyen Nguyen 👋`}
                     </h2>
                     <h3 className="text-lg leading-tight">
-                      I`&apos;`m a detail oriented, user-minded software engineer based
-                      in Los Angeles, CA
+                      I&apos;m a detail oriented, user-minded software engineer
+                      based in Los Angeles, CA
                     </h3>
                   </div>
                   <div>
@@ -76,8 +114,8 @@ const Hero = () => {
                       and efficient solution utilizing modern techlogies like
                       Typescript, Tailwind CSS, and Next.js. I constantly ask
                       myself the question of what can be improved to enhance
-                      users`&apos;` experiences. And I truly believe that mindset of
-                      constant improvement that makes me better everyday.
+                      users&apos; experiences. And I truly believe that mindset
+                      of constant improvement that makes me better everyday.
                     </p>
                     {/* <h3 className="text-lg">
                       "Your most unhappy customers are your greatest source of

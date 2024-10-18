@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Utility function to get the IP address
-const getIpAddress = (req: NextRequest): string | null => {
+const getIpAddress = async (req: NextRequest): Promise<Record<string, any> | null> => {
     // The 'x-forwarded-for' header is a common way to get the real IP when behind a proxy
     const xForwardedFor = req.headers.get('x-forwarded-for');
-    let userIP
+    let userIP, lat, lng
     if (xForwardedFor) {
         // The x-forwarded-for header can contain multiple IPs (comma-separated), get the first one
         userIP = xForwardedFor.split(',')[0].trim()
@@ -13,16 +13,16 @@ const getIpAddress = (req: NextRequest): string | null => {
         }
 
         console.log(userIP)
-
-        return userIP;
+        const locationData = await fetch(`http://ip-api.com/json/${userIP}`).then(res => res.json())
+        lat = locationData.lat
+        lng = locationData.lon
     }
 
     // Fallback to `req.ip` if no 'x-forwarded-for' header exists (depends on the environment)
-    return req.ip || null;
+    return { lat, lng };;
 };
 
 export async function GET(req: NextRequest) {
-    const ipAddress = getIpAddress(req);
-
-    return NextResponse.json({ ip: ipAddress });
+    const location = await getIpAddress(req);
+    return NextResponse.json({ location: location });
 }

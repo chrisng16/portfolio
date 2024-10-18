@@ -1,22 +1,24 @@
 "use client";
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-const GoogleMap = () => {
+const GoogleMap = ({
+  userLocation,
+}: {
+  userLocation: google.maps.LatLngLiteral;
+}) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
-    const userLocation: google.maps.LatLngLiteral = {
-      lat: 0,
-      lng: 0,
-    };
-    if ("geolocation" in navigator) {
-      // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
-      navigator.geolocation.getCurrentPosition(({ coords }) => {
-        const { latitude, longitude } = coords;
-        userLocation.lat = latitude;
-        userLocation.lng = longitude;
-      });
-    }
+    // const userLocation: google.maps.LatLngLiteral = userLocation;
+    // if ("geolocation" in navigator) {
+    //   // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
+    //   navigator.geolocation.getCurrentPosition(({ coords }) => {
+    //     const { latitude, longitude } = coords;
+    //     userLocation.lat = latitude;
+    //     userLocation.lng = longitude;
+    //   });
+    // }
 
     const initMap = async () => {
       const loader = new Loader({
@@ -26,13 +28,13 @@ const GoogleMap = () => {
       const { Map } = await loader.importLibrary("maps");
       const { AdvancedMarkerElement } = await loader.importLibrary("marker");
 
-      const centerLocation: google.maps.LatLngLiteral = {
+      const centerLoc: google.maps.LatLngLiteral = {
         lat: 34.0138,
         lng: -118.4405,
       };
 
       const mapOptions: google.maps.MapOptions = {
-        center: centerLocation,
+        center: centerLoc,
         zoom: 8,
         mapId: "671ef45b8dfa60c9",
         disableDefaultUI: true,
@@ -44,11 +46,11 @@ const GoogleMap = () => {
       const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
       const userMarker = new AdvancedMarkerElement({
         map,
-        position: userLocation,
+        position: userLocation as google.maps.LatLngLiteral,
       });
       const centerMarker = new AdvancedMarkerElement({
         map,
-        position: centerLocation,
+        position: centerLoc,
       });
 
       const markers: Array<google.maps.marker.AdvancedMarkerElement> = []; //some array;
@@ -62,8 +64,8 @@ const GoogleMap = () => {
 
       map.fitBounds(bounds);
     };
-    initMap();
-  }, []);
+    if (userLocation !== null) initMap();
+  }, [userLocation]);
 
   return <div ref={mapRef} className="w-full h-[40vh] pointer-events-none" />;
 };

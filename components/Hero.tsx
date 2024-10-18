@@ -51,7 +51,7 @@ const Hero = () => {
     fetchLocation().then((res) => {
       onLoadComplete(res as google.maps.LatLngLiteral);
     });
-  }, [onLoadComplete]);
+  }, []);
 
   return (
     <div ref={targetRef} className="relative h-[200vh]">

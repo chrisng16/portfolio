@@ -5,7 +5,7 @@ import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 const Footer = () => {
   return (
-    <div className="w-full bg-white/50 dark:bg-black/50 backdrop-blur-md font-leagueSpartan">
+    <div className="w-full bg-transparent dark:bg-black/30 backdrop-blur font-leagueSpartan">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col sm:flex-row w-full justify-between p-6 pb-0">
           <div className="flex flex-col">
@@ -21,7 +21,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 leading-none font-leagueSpartan pt-2">
+          <div className="flex flex-col gap-2 leading-none font-leagueSpartan justify-center pt-2">
             <Link href={""} className="flex items-center gap-1">
               <Icons.MapPinIcon /> <span>Los Angeles, CA</span>
             </Link>

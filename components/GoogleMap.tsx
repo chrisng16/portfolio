@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import { useTheme } from "next-themes";
 
 const GoogleMap = ({
   userLocation,

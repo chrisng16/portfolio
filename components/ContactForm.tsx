@@ -50,10 +50,8 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="max-w-xl w-full p-6 max-h-screen mx-auto h-auto dark:bg-black/30 bg-white/30 rounded-xl border shadow-lg">
-      <h2 className="mx-auto text-center text-3xl">
-        Contact Form
-      </h2>
+    <div className="max-w-xl w-full p-6 max-h-screen mx-auto h-auto bg-white/30 dark:bg-black/30 backdrop-blur rounded-xl border border-black/20 dark:border-white/20 shadow-lg">
+      <h2 className="mx-auto text-center text-3xl">Contact Form</h2>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -65,9 +63,13 @@ const ContactForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>Your Name</FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Name" {...field} />
+                    <Input
+                      className="border-black/30 dark:border-white/30"
+                      placeholder="Name"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -82,7 +84,11 @@ const ContactForm = () => {
               <FormItem className="w-full">
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="Email" {...field} />
+                  <Input
+                    className="border-black/30 dark:border-white/30"
+                    placeholder="Email"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -95,7 +101,11 @@ const ContactForm = () => {
               <FormItem className="w-full">
                 <FormLabel>Message</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Message" {...field} />
+                  <Textarea
+                    className="border-black/30 dark:border-white/30"
+                    placeholder="Message"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

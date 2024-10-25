@@ -15,10 +15,7 @@ const getIpAddress: (req: NextRequest) => Promise<google.maps.LatLngLiteral> = a
         if (userIP.substring(0, 7) == "::ffff:") {
             userIP = xForwardedFor.substring(7)
         }
-
         console.log(userIP)
-
-        userIP = "170.40.150.126"
         const locationData = await fetch(`http://ip-api.com/json/${userIP}`).then(res => res.json()).catch(error => console.error(error))
         if (locationData.status === "success") {
             userLocation.lat = locationData.lat

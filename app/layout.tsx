@@ -4,6 +4,8 @@ import Header from "@/components/Header";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Background from "@/components/Background";
+import Footer from "@/components/Footer";
+import { Toaster } from "@/components/ui/toaster";
 // import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,13 +23,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={` ${inter.className} antialiased text-black dark:text-white scroll-smooth`}
+        className={` ${inter.className} antialiased text-black dark:text-white`}
       >
         <ThemeProvider attribute="class">
-          {/* <div className="fixed inset-0 z-20 transition dur lg:absolute bg-[radial-gradient(circle_300px_at_90%_200px,rgba(29,78,216,0.15),transparent)]"></div> */}
           <Header />
           <Background />
-          <div className="flex mx-auto w-full">{children}</div>
+          <div className="flex mx-auto w-full scroll-smooth">{children}</div>
+          <Footer />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

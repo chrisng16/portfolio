@@ -5,8 +5,8 @@ const getIpAddress: (req: NextRequest) => Promise<google.maps.LatLngLiteral> = a
     // The 'x-forwarded-for' header is a common way to get the real IP when behind a proxy
     const xForwardedFor = req.headers.get('x-forwarded-for');
     const userLocation: google.maps.LatLngLiteral = {
-        lat: 0,
-        lng: 0
+        lat: -999,
+        lng: -999
     }
     if (xForwardedFor) {
         let userIP
@@ -17,9 +17,13 @@ const getIpAddress: (req: NextRequest) => Promise<google.maps.LatLngLiteral> = a
         }
 
         console.log(userIP)
-        const locationData = await fetch(`http://ip-api.com/json/${userIP}`).then(res => res.json())
-        userLocation.lat = locationData.lat
-        userLocation.lng = locationData.lon
+
+        userIP = "170.40.150.126"
+        const locationData = await fetch(`http://ip-api.com/json/${userIP}`).then(res => res.json()).catch(error => console.error(error))
+        if (locationData.status === "success") {
+            userLocation.lat = locationData.lat
+            userLocation.lng = locationData.lon
+        }
     }
 
     return userLocation;;

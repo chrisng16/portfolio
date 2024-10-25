@@ -4,17 +4,26 @@ import ThemeSwitch from "./ThemeSwitch";
 
 const Header = () => {
   return (
-    <div className="text-center sticky top-0 z-50 w-full bg-transparent dark:bg-black/30 backdrop-blur-md">
+    <div className="text-center font-leagueSpartan sticky top-0 h-15 z-50 w-full bg-transparent dark:bg-black/30 backdrop-blur-md">
       <nav className="flex justify-evenly items-center gap-4 p-2">
         <h1 className="text-2xl flex-1 text-left p-2 font-leagueSpartan font-semibold">
           nSquare.dev
         </h1>
         <div className="flex-1 flex justify-evenly">
-          <Link href={""}>About</Link>
-          <Link href={""}>Experience</Link>
-          <Link href={""}>Contact</Link>
+          <Link href="#about" className="group transition duration-300">
+            About
+            <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black/50 dark:bg-white/50"></span>
+          </Link>
+          <Link href="#experience" className="group transition duration-300">
+            Experience
+            <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black/50 dark:bg-white/50"></span>
+          </Link>
+          <Link href="#contact" className="group transition duration-300">
+            Contact
+            <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black/50 dark:bg-white/50"></span>
+          </Link>
         </div>
-        <div className="flex-1 flex justify-end">
+        <div className="flex-1 flex justify-end p-2">
           <ThemeSwitch />
         </div>
       </nav>

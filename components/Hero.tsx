@@ -7,7 +7,19 @@ import GoogleMap from "./GoogleMap";
 const Hero = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+
+  let scrollRange: Array<string> = ["0%", "0%", "0%"];
+  if (typeof window !== "undefined") {
+    if (window.matchMedia("(min-width: 640px)").matches) {
+      scrollRange = ["0%", "-50%", "-50%"];
+    } else {
+      scrollRange = ["0%", "0%", "0%"];
+    }
+  }
+
+  const x = useTransform(scrollYProgress, [0, 0.8, 1], scrollRange);
+  console.log(x);
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [userLocation, setUserLocation] =
     useState<google.maps.LatLngLiteral | null>(null);
@@ -45,7 +57,9 @@ const Hero = () => {
   useEffect(() => {
     const fetchLocation = async () => {
       setIsLoading(true);
-      const { location } = await fetch("/api/get-ip").then((res) => res.json());
+      const { location } = await fetch("/api/get-location").then((res) =>
+        res.json()
+      );
       return location;
     };
     fetchLocation().then((res) => {
@@ -54,13 +68,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <div ref={targetRef} className="relative h-[200vh]">
-      <div className="flex sticky top-10 items-center h-[90vh] justify-between overflow-hidden">
+    <div ref={targetRef} id="about" className="relative h-auto sm:h-[190vh]">
+      <div className="flex sticky sm:top-12 items-center justify-between overflow-hidden">
         <motion.div
           style={{ x }}
-          className="flex items-center snap-both snap-mandatory"
+          className="flex flex-col sm:flex-row items-center h-auto relative"
         >
-          <div className="flex flex-col gap-4 justify-center items-center w-screen h-full snap-center">
+          <div className="flex flex-col gap-4 justify-center items-center w-screen h-[90vh]">
             <Image
               src={"/images/avatar.png"}
               width={120}
@@ -76,48 +90,43 @@ const Hero = () => {
                 <span className="bg-[#d5c5ff] dark:bg-[#3a0342] p-1">
                   ideas
                 </span>{" "}
-                into digital{" "}
+                into elegant{" "}
                 <span className="bg-[#d5c5ff] dark:bg-[#3a0342] p-1">
                   solutions
                 </span>
               </p>
             </div>
           </div>
-          <div className="flex justify-center items-center w-screen h-full snap-center">
-            <div className="w-full max-w-5xl">
-              <div className="bg-transparent rounded-lg flex gap-5 items-center justify-center">
-                {/* <Image
-                  src={"/images/avatar.png"}
-                  width={120}
-                  height={120}
-                  alt="Avatar"
-                  className="size-60 rounded-lg border-4 border-zinc-400"
-                /> */}
-                {isLoading || userLocation === null ? (
-                  <div>Loading...</div>
-                ) : (
-                  <GoogleMap userLocation={userLocation} />
-                )}
-                <div className="font-leagueSpartan flex flex-col">
-                  <div className="flex flex-col pb-1">
-                    <h2 className="font-medium text-xl">
-                      {`Hello stranger from ${distance} miles away, I am Nguyen Nguyen 👋`}
-                    </h2>
-                    <h3 className="text-lg leading-tight">
-                      I&apos;m a detail oriented, user-minded software engineer
-                      based in Los Angeles, CA
-                    </h3>
-                  </div>
-                  <div>
-                    <p className="pt-1 mb-1 text-justify">
-                      I dive head on and turn complex challenges into elegant
-                      and efficient solution utilizing modern techlogies like
-                      Typescript, Tailwind CSS, and Next.js. I constantly ask
-                      myself the question of what can be improved to enhance
-                      users&apos; experiences. And I truly believe that mindset
-                      of constant improvement that makes me better everyday.
-                    </p>
-                    {/* <h3 className="text-lg">
+          <div className="w-screen h-auto p-6">
+            <div className="font-leagueSpartan flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
+              <div className="flex flex-col md:flex-row justify-center items-center pb-1 gap-6">
+                <div className="w-full md:w-1/2 my-2">
+                  {isLoading || userLocation === null ? (
+                    <div>Loading...</div>
+                  ) : (
+                    <GoogleMap userLocation={userLocation} />
+                  )}
+                </div>
+                <div className="w-full md:w-1/2 flex flex-col gap-1 justify-center">
+                  <h2 className="font-medium text-xl">
+                    {`Greetings from ${distance} miles away, I am Nguyen Nguyen 👋`}
+                  </h2>
+                  <h3 className="text-lg leading-tight">
+                    I&apos;m a detail oriented, user-minded software engineer
+                    based in Los Angeles, CA
+                  </h3>
+                  <p className="">
+                    I dive head on and turn complex challenges into elegant and
+                    efficient solution utilizing modern techlogies like
+                    Typescript, Tailwind CSS, and Next.js. I constantly ask
+                    myself the question of what can be improved to enhance
+                    users&apos; experiences. And I truly believe that mindset of
+                    constant improvement that makes me better everyday.
+                  </p>
+                </div>
+              </div>
+
+              {/* <h3 className="text-lg">
                       "Your most unhappy customers are your greatest source of
                       learning" – Bill Gates
                     </h3>
@@ -132,9 +141,6 @@ const Hero = () => {
                       reinforced my belief in the power of continuous learning,
                       both on the job and beyond.
                     </p> */}
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </motion.div>

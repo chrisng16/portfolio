@@ -24,7 +24,7 @@ const Background = () => {
         }}
       ></div> */}
       <div className="absolute top-0 inset-0 -z-10 h-screen w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] dark:bg-black dark:bg-[linear-gradient(to_right,#0f0f0f_1px,transparent_1px),linear-gradient(to_bottom,#0f0f0f_1px,transparent_1px)] bg-[size:6rem_4rem]">
-        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_600px_at_10%_200px,#d5c5ff,transparent)] opacity-100 dark:bg-[radial-gradient(circle_1500px_at_80%_200px,#3a0342,transparent)] dark:opacity-70"></div>
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_600px_at_10%_200px,#d5c5ff,transparent)] opacity-100 dark:bg-[radial-gradient(circle_1000px_at_10%_50%,#3a0342,transparent)] dark:opacity-70"></div>
       </div>
     </div>
   );

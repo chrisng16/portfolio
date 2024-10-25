@@ -1,12 +1,11 @@
 import React from "react";
 
-const PreWork = () => {
+const PreContact = () => {
   return (
     <div className="w-screen bg-black/10 dark:bg-white/10 p-6">
       <div className="flex flex-col gap-2 items-center justify-center font-leagueSpartan mx-auto w-full max-w-5xl">
         <h2 className="font-medium text-xl text-center">
-          Bridging the gap between clean, modern code and functional user
-          experiences
+          Love my work so far? Let's connect...
         </h2>
         <p>
           From a young age, I’ve been driven by the dream of creating tools that
@@ -21,4 +20,4 @@ const PreWork = () => {
   );
 };
 
-export default PreWork;
+export default PreContact;

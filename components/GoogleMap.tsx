@@ -9,7 +9,6 @@ const GoogleMap = ({
   userLocation: google.maps.LatLngLiteral;
 }) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
-  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     // const userLocation: google.maps.LatLngLiteral = userLocation;

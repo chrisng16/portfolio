@@ -1,7 +1,5 @@
 import React from "react";
 import ContactForm from "./ContactForm";
-import { Icons } from "./Icons";
-import Link from "next/link";
 
 const ContactSection = () => {
   return (
@@ -12,10 +10,10 @@ const ContactSection = () => {
           <div className="w-full md:w-1/2">
             <h2 className="text-4xl text-center md:text-left">Contact Me</h2>
             <p className="text-lg">
-              I'm excited to bring my skills in software development to your
-              team. Let's connect to discuss how I can contribute to your
-              company's success. Reach me at nguyen.nguyen@nSquare.dev or using
-              the Contact Form.
+              I&apos;m excited to bring my skills in software development to
+              your team. Let&apos;s connect to discuss how I can contribute to
+              your company&apos;s success. Reach me at nguyen.nguyen@nSquare.dev
+              or using the Contact Form.
             </p>
           </div>
 

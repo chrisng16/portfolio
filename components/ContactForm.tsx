@@ -51,7 +51,7 @@ const ContactForm = () => {
 
   return (
     <div className="max-w-xl w-full p-6 max-h-screen mx-auto h-auto bg-transparent dark:bg-black/30 backdrop-blur rounded-xl border border-black/20 dark:border-white/20 shadow-lg">
-      <h2 className="mx-auto text-center text-3xl">Contact Form</h2>
+      <h2 className="mx-auto text-center text-2xl md:text-3xl">Contact Form</h2>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

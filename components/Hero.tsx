@@ -95,13 +95,15 @@ const Hero = () => {
                   solutions
                 </span>
               </p>
-              <GlowingButton className="mt-4 max-w-fit" href={""}>Download Resume</GlowingButton>
+              <GlowingButton className="mt-4 max-w-fit" href={""}>
+                Download Resume
+              </GlowingButton>
             </div>
           </div>
           <div className="w-screen h-auto p-6">
             <div className="font-leagueSpartan flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
-              <div className="flex flex-col md:flex-row justify-center items-center pb-1 gap-6">
-                <div className="w-full md:w-1/2 my-2">
+              <div className="flex flex-col-reverse md:flex-row justify-center items-center pb-1 gap-6">
+                <div className="w-full md:w-1/2">
                   {isLoading || userLocation === null ? (
                     <div>Loading...</div>
                   ) : (
@@ -116,7 +118,7 @@ const Hero = () => {
                     I&apos;m a detail oriented, user-minded software engineer
                     based in Los Angeles, CA
                   </h3>
-                  <p className="">
+                  <p className="text-justify">
                     I dive head on and turn complex challenges into elegant and
                     efficient solution utilizing modern techlogies like
                     Typescript, Tailwind CSS, and Next.js. I constantly ask

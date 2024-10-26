@@ -8,7 +8,7 @@ const ContactSection = () => {
       <div className="p-6 md:p-0 w-full h-full font-leagueSpartan">
         <div className="max-w-5xl h-full flex flex-col md:flex-row items-center gap-6 mx-auto p-0 md:p-6">
           <div className="w-full md:w-1/2 space-y-2">
-            <h2 className="text-4xl leading-none text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl leading-none text-center md:text-left">
               Let&apos;s Connect...
             </h2>
             <p className="text-lg text-center md:text-left">

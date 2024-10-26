@@ -2,7 +2,7 @@ import React from "react";
 
 const PreWork = () => {
   return (
-    <div className="w-screen bg-black/10 dark:bg-white/10 p-6">
+    <div className="w-screen bg-black/10 dark:bg-white/10 p-6 hidden md:block">
       <div className="flex flex-col gap-2 items-center justify-center font-leagueSpartan mx-auto w-full max-w-5xl">
         <h2 className="font-medium text-xl text-center">
           Bridging the gap between clean, modern code and functional user

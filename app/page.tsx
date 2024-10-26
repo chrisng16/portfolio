@@ -12,7 +12,7 @@ import useActiveSection, { Section } from "@/hooks/use-active-section";
 const sections: Array<Section> = [
   { id: "about" },
   { id: "experience" },
-  { id: "contact" },
+  { id: "contact", threshold: 0.8 },
 ];
 
 export default function Home() {
@@ -23,11 +23,11 @@ export default function Home() {
       <Header active={activeSection} />
       <Background />
       <div className="flex mx-auto w-full">
-        <main className="w-full scroll-smooth">
-          <div ref={observers[0].ref}>
+        <main className="w-full scroll-smooth z-10">
+          <div ref={observers[0].ref} className="z-10">
             <Hero />
           </div>
-          <div ref={observers[1].ref}>
+          <div ref={observers[1].ref} id="experience">
             <PreWork />
             <Experience />
           </div>

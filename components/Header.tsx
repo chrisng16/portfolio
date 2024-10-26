@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ThemeSwitch from "./ThemeSwitch";
-import useHash from "@/hooks/use-hash";
 import { cn } from "@/lib/utils";
 
 const Header = ({ active }: { active: string }) => {

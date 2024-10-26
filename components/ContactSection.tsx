@@ -3,15 +3,15 @@ import ContactForm from "./ContactForm";
 
 const ContactSection = () => {
   return (
-    <div className="w-full font-leagueSpartan relative">
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/wavey-fingerprint.svg')] opacity-30 -z-10 repeat-infinite"></div>
-      <div className="p-6 md:p-0 w-full font-leagueSpartan">
-        <div className="max-w-5xl flex flex-col md:flex-row items-center gap-6 mx-auto p-0 md:p-6">
+    <div className="w-full md:h-[75vh] h-full font-leagueSpartan relative  bg-gradient-to-r from-transparent from-10% via-white/40 via-60% dark:via-transparent/20 dark:via-80% to-white/80 dark:to-transparent/40 to-100%">
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/endless-constellation.svg')] dark:bg-[url('/images/starry.svg')] opacity-50 -z-10 repeat-infinite"></div>
+      <div className="p-6 md:p-0 w-full h-full font-leagueSpartan">
+        <div className="max-w-5xl h-full flex flex-col md:flex-row items-center gap-6 mx-auto p-0 md:p-6">
           <div className="w-full md:w-1/2 space-y-2">
-            <h2 className="text-4xl text-center md:text-left">
+            <h2 className="text-4xl leading-none text-center md:text-left">
               Let&apos;s Connect...
             </h2>
-            <p className="text-lg">
+            <p className="text-lg text-center md:text-left">
               I&apos;m excited to bring my skills in software development to
               your team. Let&apos;s connect to discuss how I can contribute to
               your company&apos;s success. Reach me at nguyen.nguyen@nSquare.dev

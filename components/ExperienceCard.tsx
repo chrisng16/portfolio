@@ -24,7 +24,7 @@ const ExperienceCard = ({
   location?: string;
 }) => {
   return (
-    <Card className="bg-black/10">
+    <Card className="bg-white/10 dark:bg-black/10">
       <CardHeader>
         <div className="flex justify-between gap-4">
           <CardTitle className="text-left">{title}</CardTitle>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useTransform, useScroll, motion } from "framer-motion";
 import GoogleMap from "./GoogleMap";
+import GlowingButton from "./GlowingButton";
 
 const Hero = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -18,7 +19,6 @@ const Hero = () => {
   }
 
   const x = useTransform(scrollYProgress, [0, 0.8, 1], scrollRange);
-  console.log(x);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [userLocation, setUserLocation] =
@@ -95,6 +95,7 @@ const Hero = () => {
                   solutions
                 </span>
               </p>
+              <GlowingButton className="mt-4 max-w-fit" href={""}>Download Resume</GlowingButton>
             </div>
           </div>
           <div className="w-screen h-auto p-6">

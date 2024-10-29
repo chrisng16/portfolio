@@ -5,12 +5,12 @@ import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 const Footer = () => {
   return (
-    <div className="w-full dark:bg-black/80 backdrop-blur font-leagueSpartan">
-      <div className="max-w-5xl mx-auto">
-        <div className="flex flex-row w-full justify-between p-6 pb-0">
+    <div className="w-full font-leagueSpartan backdrop-blur dark:bg-black/80">
+      <div className="mx-auto max-w-5xl">
+        <div className="flex w-full flex-row justify-between p-6 pb-0">
           <div className="flex flex-col">
             <h3 className="text-3xl font-bold">nSquare.dev</h3>
-            <div className="flex flex-col gap-2 leading-none font-leagueSpartan justify-center mt-1">
+            <div className="mt-1 flex flex-col justify-center gap-2 font-leagueSpartan leading-none">
               <Link href={""} className="flex items-center gap-1">
                 <Icons.MapPinIcon /> <span>Los Angeles, CA</span>
               </Link>
@@ -38,8 +38,8 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-        <div className="pt-4 pb-2 flex flex-col items-center justify-center w-full">
-          <span className="text-base text-center">
+        <div className="flex w-full flex-col items-center justify-center pb-2 pt-4">
+          <span className="text-center text-base">
             <a
               target="_blank"
               rel="noopener noreferrer"

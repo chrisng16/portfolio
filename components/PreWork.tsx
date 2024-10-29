@@ -2,9 +2,9 @@ import React from "react";
 
 const PreWork = () => {
   return (
-    <div className="w-screen bg-black/10 dark:bg-white/10 p-6 hidden md:block">
-      <div className="flex flex-col gap-2 items-center justify-center font-leagueSpartan mx-auto w-full max-w-5xl">
-        <h2 className="font-medium text-xl text-center">
+    <div className="hidden w-screen bg-black/10 p-6 dark:bg-white/10 md:block">
+      <div className="mx-auto flex w-full max-w-5xl flex-col items-center justify-center gap-2 font-leagueSpartan">
+        <h2 className="text-center text-xl font-medium">
           Bridging the gap between clean, modern code and functional user
           experiences
         </h2>

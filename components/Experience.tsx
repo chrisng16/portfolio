@@ -45,19 +45,19 @@ const projects = [
 
 const Experience = () => {
   return (
-    <div className="flex flex-col sm:flex-row justify-center max-h-[300vh] font-leagueSpartan w-full mx-auto max-w-5xl pb-10">
-      <div className="sticky h-min top-0 hidden sm:flex flex-col pt-24 px-6 w-full sm:w-2/5 items-center sm:items-baseline ">
+    <div className="mx-auto flex max-h-[300vh] w-full max-w-5xl flex-col justify-center pb-10 font-leagueSpartan sm:flex-row">
+      <div className="sticky top-0 hidden h-min w-full flex-col items-center px-6 pt-24 sm:flex sm:w-2/5 sm:items-baseline">
         <h3 className="text-4xl font-bold">Nguyen Nguyen</h3>
         <h3 className="text-2xl font-semibold">Software Engineer</h3>
-        <h4 className="text-xl leading-none flex gap-1 items-end">
+        <h4 className="flex items-end gap-1 text-xl leading-none">
           <Icons.MapPinIcon />
           Los Angeles, CA
         </h4>
       </div>
-      <div className="flex flex-col w-full sm:w-3/5">
-        <section id="work-experience" className="h-auto relative">
-          <div className="px-6 sticky top-0 pt-16 sm:mt-0 -mt-8 sm:pt-24 mb-6 bg-transparent rounded-xl backdrop-blur">
-            <h2 className="text-3xl backdrop-blur rounded-xl">
+      <div className="flex w-full flex-col sm:w-3/5">
+        <section id="work-experience" className="relative h-auto">
+          <div className="sticky top-0 -mt-8 mb-6 rounded-xl bg-transparent px-6 pt-16 backdrop-blur sm:mt-0 sm:pt-24">
+            <h2 className="rounded-xl text-3xl backdrop-blur">
               Work Experience
             </h2>
           </div>
@@ -77,9 +77,9 @@ const Experience = () => {
             />
           </div>
         </section>
-        <section id="projects" className="h-auto relative">
-          <div className="px-6 sticky top-0 pt-16 mt-4 sm:pt-20 mb-6 bg-transparent rounded-xl backdrop-blur">
-            <h2 className="text-3xl backdrop-blur rounded-xl">Projects</h2>
+        <section id="projects" className="relative h-auto">
+          <div className="sticky top-0 mb-6 mt-4 rounded-xl bg-transparent px-6 pt-16 backdrop-blur sm:pt-20">
+            <h2 className="rounded-xl text-3xl backdrop-blur">Projects</h2>
           </div>
           <div className="h-auto space-y-2 px-6">
             {projects.map((project, index) => (

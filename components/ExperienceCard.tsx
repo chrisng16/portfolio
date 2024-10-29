@@ -36,18 +36,18 @@ const ExperienceCard = ({
         </div>
       </CardHeader>
       <CardContent>
-        <ul className="list-disc mx-4">
+        <ul className="mx-4 list-disc">
           {responsibilities.map((responsibility, index) => (
             <li key={index}>{responsibility}</li>
           ))}
         </ul>
       </CardContent>
       {techStack && (
-        <CardFooter className="gap-2 flex flex-wrap">
+        <CardFooter className="flex flex-wrap gap-2">
           {techStack.map((tech, index) => (
             <div
               key={index}
-              className="rounded-full border bg-black/10 dark:bg-white/10 py-2 px-4 font-mono flex items-center leading-none text-xs"
+              className="flex items-center rounded-full border bg-black/10 px-4 py-2 font-mono text-xs leading-none dark:bg-white/10"
             >
               <span>{tech}</span>
             </div>

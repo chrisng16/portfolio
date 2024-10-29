@@ -1,6 +1,6 @@
 "use client";
 import { motion, useTransform, useScroll } from "framer-motion";
-import { useRef,  } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 const HeroMotion = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -9,9 +9,9 @@ const HeroMotion = () => {
 
   return (
     <div ref={targetRef} className="relative h-[200vh]">
-      <div className="flex sticky top-0 items-center h-screen justify-between overflow-hidden">
+      <div className="sticky top-0 flex h-screen items-center justify-between overflow-hidden">
         <motion.div style={{ x }} className="flex">
-          <motion.div className="grid grid-cols-3 w-screen h-screen flex-shrink-0">
+          <motion.div className="grid h-screen w-screen flex-shrink-0 grid-cols-3">
             <div className="col-span-2 flex items-center">
               <div className="flex-1">
                 <motion.h2
@@ -64,7 +64,7 @@ const HeroMotion = () => {
                     delay: 4,
                   },
                 }}
-                className="flex flex-col flex-1 justify-center items-center leading-none"
+                className="flex flex-1 flex-col items-center justify-center leading-none"
               >
                 <motion.span
                   initial={{ y: -400, fontSize: "3rem" }}
@@ -110,7 +110,7 @@ const HeroMotion = () => {
                   delay: 3.5,
                 },
               }}
-              className="flex-1 flex items-center"
+              className="flex flex-1 items-center"
             >
               <Image
                 src={"/images/avatar.png"}
@@ -122,7 +122,7 @@ const HeroMotion = () => {
             </motion.div>
           </motion.div>
 
-          <motion.div className="h-screen w-screen flex items-center justify-center flex-shrink-0  bg-black/20">
+          <motion.div className="flex h-screen w-screen flex-shrink-0 items-center justify-center bg-black/20">
             hello world
           </motion.div>
         </motion.div>

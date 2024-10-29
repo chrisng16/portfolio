@@ -42,10 +42,10 @@ const ProjectCard = ({
           alt="Projects: Dental Website"
           width={1600}
           height={900}
-          className="rounded-xl my-4 mx-auto w-4/5"
+          className="mx-auto my-4 w-4/5 rounded-xl"
         />
         <div>
-          <ul className="list-disc mx-4">
+          <ul className="mx-4 list-disc">
             {responsibilities.map((responsibility, index) => (
               <li key={index}>{responsibility}</li>
             ))}
@@ -53,11 +53,11 @@ const ProjectCard = ({
         </div>
       </CardContent>
       {techStack && (
-        <CardFooter className="gap-2 flex flex-wrap">
+        <CardFooter className="flex flex-wrap gap-2">
           {techStack.map((tech, index) => (
             <div
               key={index}
-              className="rounded-full border bg-black/10 dark:bg-white/10 py-2 px-4 font-mono flex items-center leading-none text-xs"
+              className="flex items-center rounded-full border bg-black/10 px-4 py-2 font-mono text-xs leading-none dark:bg-white/10"
             >
               <span>{tech}</span>
             </div>

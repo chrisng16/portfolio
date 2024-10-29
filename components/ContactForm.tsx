@@ -50,14 +50,14 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="max-w-xl w-full p-6 max-h-screen mx-auto h-auto bg-transparent dark:bg-black/30 backdrop-blur rounded-xl border border-black/20 dark:border-white/20 shadow-lg">
+    <div className="mx-auto h-auto max-h-screen w-full max-w-xl rounded-xl border border-black/20 bg-transparent p-6 shadow-lg backdrop-blur dark:border-white/20 dark:bg-black/30">
       <h2 className="mx-auto text-center text-2xl md:text-3xl">Contact Form</h2>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full space-y-6 flex flex-col items-center"
+          className="flex w-full flex-col items-center space-y-6"
         >
-          <div className="flex gap-4 items-start w-full">
+          <div className="flex w-full items-start gap-4">
             <FormField
               control={form.control}
               name="name"

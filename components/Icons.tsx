@@ -1,5 +1,5 @@
 const PhoneIcon = (
-  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) => {
   return (
     <svg
@@ -15,7 +15,7 @@ const PhoneIcon = (
 };
 
 const MailIcon = (
-  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) => {
   return (
     <svg
@@ -31,7 +31,7 @@ const MailIcon = (
 };
 
 const MapPinIcon = (
-  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) => {
   return (
     <svg
@@ -46,7 +46,7 @@ const MapPinIcon = (
   );
 };
 const LinkedInIcon = (
-  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) => {
   return (
     <svg

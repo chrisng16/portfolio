@@ -21,14 +21,14 @@ const ThemeSwitch = () => {
   };
 
   return (
-    <label className="inline-flex items-center cursor-pointer">
+    <label className="inline-flex cursor-pointer items-center">
       <input
         type="checkbox"
         checked={resolvedTheme === "dark"}
-        className="sr-only peer"
+        className="peer sr-only"
         onChange={handleToggle}
       />
-      <div className="relative w-12 h-7 bg-[#8FB5F5] peer-checked:bg-gray-700 ring-2 ring-zinc-300 peer-checked:ring-zinc-800 rounded-full peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:absolute after:top-[4px] after:start-[4px] peer-checked:after:bg-[#7B7B7B] peer-checked:after:shadow-[6px_0px_0_0_inset] after:shadow-none peer-checked:after:shadow-black/20 after:bg-[#ECD21F] after:rounded-full after:size-5 after:transition-all dark:border-gray-600 "></div>
+      <div className="relative h-7 w-12 rounded-full bg-[#8FB5F5] ring-2 ring-zinc-300 after:absolute after:start-[4px] after:top-[4px] after:size-5 after:rounded-full after:bg-[#ECD21F] after:shadow-none after:transition-all peer-checked:bg-gray-700 peer-checked:ring-zinc-800 peer-checked:after:translate-x-full peer-checked:after:bg-[#7B7B7B] peer-checked:after:shadow-[6px_0px_0_0_inset] peer-checked:after:shadow-black/20 dark:border-gray-600 rtl:peer-checked:after:-translate-x-full"></div>
     </label>
   );
 };

@@ -58,7 +58,7 @@ const Hero = () => {
     const fetchLocation = async () => {
       setIsLoading(true);
       const { location } = await fetch("/api/get-location").then((res) =>
-        res.json()
+        res.json(),
       );
       return location;
     };
@@ -69,12 +69,12 @@ const Hero = () => {
 
   return (
     <div ref={targetRef} id="about" className="relative h-auto sm:h-[190vh]">
-      <div className="flex sticky sm:top-12 items-center justify-between overflow-hidden">
+      <div className="sticky flex items-center justify-between overflow-hidden sm:top-12">
         <motion.div
           style={{ x }}
-          className="flex flex-col sm:flex-row items-center h-auto relative"
+          className="relative flex h-auto flex-col items-center sm:flex-row"
         >
-          <div className="flex flex-col gap-4 justify-center items-center w-screen h-[90vh]">
+          <div className="flex h-[90vh] w-screen flex-col items-center justify-center gap-4">
             <Image
               src={"/images/avatar.png"}
               width={120}
@@ -83,15 +83,15 @@ const Hero = () => {
               className="size-52 rounded-full border-4 border-zinc-400"
             />
             <div className="w-full max-w-5xl text-center font-leagueSpartan">
-              <h2 className="text-4xl  font-leagueSpartan">Nguyen Nguyen</h2>
-              <h3 className="text-3xl  ">Software Engineer</h3>
+              <h2 className="font-leagueSpartan text-4xl">Nguyen Nguyen</h2>
+              <h3 className="text-3xl">Software Engineer</h3>
               <p className="text-xl">
                 Transforming{" "}
-                <span className="bg-[#d5c5ff] dark:bg-[#3a0342] p-1">
+                <span className="bg-[#d5c5ff] p-1 dark:bg-[#3a0342]">
                   ideas
                 </span>{" "}
                 into elegant{" "}
-                <span className="bg-[#d5c5ff] dark:bg-[#3a0342] p-1">
+                <span className="bg-[#d5c5ff] p-1 dark:bg-[#3a0342]">
                   solutions
                 </span>
               </p>
@@ -104,9 +104,9 @@ const Hero = () => {
               </GlowingButton>
             </div>
           </div>
-          <div className="w-screen h-auto p-6">
-            <div className="font-leagueSpartan flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
-              <div className="flex flex-col-reverse md:flex-row justify-center items-center pb-1 gap-6">
+          <div className="h-auto w-screen p-6">
+            <div className="mx-auto flex w-full max-w-5xl flex-col items-center justify-center font-leagueSpartan">
+              <div className="flex flex-col-reverse items-center justify-center gap-6 pb-1 md:flex-row">
                 <div className="w-full md:w-1/2">
                   {isLoading || userLocation === null ? (
                     <div>Loading...</div>
@@ -114,8 +114,8 @@ const Hero = () => {
                     <GoogleMap userLocation={userLocation} />
                   )}
                 </div>
-                <div className="w-full md:w-1/2 flex flex-col gap-1 justify-center">
-                  <h2 className="font-medium text-xl">
+                <div className="flex w-full flex-col justify-center gap-1 md:w-1/2">
+                  <h2 className="text-xl font-medium">
                     {`Greetings from ${distance} miles away, I am Nguyen Nguyen 👋`}
                   </h2>
                   <h3 className="text-lg leading-tight">

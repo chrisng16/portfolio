@@ -86,8 +86,8 @@ const config: Config = {
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			boxShadow: {
-				"glow-dark": '0px 0px 12px 7px #d5c5ff60',
-				"glow": '0px 0px 12px 7px #b5a6ff',
+				"glow-dark": '0px 0px 20px 5px #d5c5ff60',
+				"glow": '0px 0px 20px 5px #b5a6ff',
 			}
 		}
 	},

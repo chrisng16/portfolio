@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useTransform, useScroll, motion } from "framer-motion";
 import GoogleMap from "./GoogleMap";
@@ -75,13 +75,15 @@ const Hero = () => {
           className="relative flex h-auto flex-col items-center sm:flex-row"
         >
           <div className="flex h-[90vh] w-screen flex-col items-center justify-center gap-4">
-            <Image
-              src={"/images/avatar.png"}
-              width={120}
-              height={120}
-              alt="Avatar"
-              className="size-52 rounded-full border-4 border-zinc-400"
-            />
+            <div className="relative rounded-full border-4 border-zinc-400 size-60 bg-[url('/images/nn_avatar.png')] bg-cover">
+              {/* <Image
+                src={"/images/avatar.jpg"}
+                width={150}
+                height={150}
+                alt="Avatar"
+                className="relative size-60 -rotate-[8deg]"
+              /> */}
+            </div>
             <div className="w-full max-w-5xl text-center font-leagueSpartan">
               <h2 className="font-leagueSpartan text-4xl">Nguyen Nguyen</h2>
               <h3 className="text-3xl">Software Engineer</h3>

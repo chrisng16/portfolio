@@ -95,7 +95,11 @@ const Hero = () => {
                   solutions
                 </span>
               </p>
-              <GlowingButton className="mt-4 max-w-fit" href={""}>
+              <GlowingButton
+                className="mt-4 max-w-fit"
+                href={"/NguyenNguyen-SWE-Resume-v1.24.10.pdf"}
+                download="NguyenNguyen-SWE-Resume"
+              >
                 Download Resume
               </GlowingButton>
             </div>

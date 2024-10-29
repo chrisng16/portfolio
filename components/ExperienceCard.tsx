@@ -24,7 +24,7 @@ const ExperienceCard = ({
   location?: string;
 }) => {
   return (
-    <Card className="bg-white/10 dark:bg-black/10">
+    <Card>
       <CardHeader>
         <div className="flex justify-between gap-4">
           <CardTitle className="text-left">{title}</CardTitle>
@@ -47,7 +47,7 @@ const ExperienceCard = ({
           {techStack.map((tech, index) => (
             <div
               key={index}
-              className="rounded-full border border-white/70 bg-white/50 px-2"
+              className="rounded-full border bg-black/10 dark:bg-white/10 py-2 px-4 font-mono flex items-center leading-none text-xs"
             >
               <span>{tech}</span>
             </div>

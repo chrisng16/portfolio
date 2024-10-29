@@ -1,6 +1,7 @@
 import React from "react";
 import { Icons } from "./Icons";
 import ExperienceCard from "./ExperienceCard";
+import ProjectCard from "./ProjectCard";
 
 const responsibilitiesJob1: Array<string> = [
   "Developed custom web applications by analyzing client requirements and creating system architectures.",
@@ -18,6 +19,28 @@ const responsibilitiesJob2: Array<string> = [
   "Supervised daily operations, ensuring smooth communication between front and back-of-house teams.",
   "Resolved customer and operational issues efficiently, maintaining high customer satisfaction.",
   "Managed team operations, implementing time management and collaborative strategies for improved performance.",
+];
+
+const projects = [
+  {
+    title: "Dental Office Website",
+    desc: "Website for a local dental office with SEO strategies implemented to boost online presence.",
+    responsibilies: [
+      "Website for a local dental office with SEO strategies implemented to boost online presence.",
+      "Implemented server-side rendering (SSR) and lazy loading to optimize load times, significantly enhancing user experience and Core Web Vitals.",
+      "Applied SEO best practices with structured data and optimized metadata, increasing visibility and search engine rankings.",
+      "Prioritized code modularity and maintainability with TypeScript, facilitating scalability and efficient future development.",
+    ],
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "TailwindCSS",
+      "USPS API",
+      "reCAPTCHA v3",
+    ],
+    picUrl: "/images/dental-page.png",
+    date: "August 2024 - Octorber 2024",
+  },
 ];
 
 const Experience = () => {
@@ -55,17 +78,21 @@ const Experience = () => {
           </div>
         </section>
         <section id="projects" className="h-auto relative">
-          <div className="px-6 sticky top-0 pt-16 sm:pt-24 mb-6 bg-transparent rounded-xl backdrop-blur">
+          <div className="px-6 sticky top-0 pt-16 mt-4 sm:pt-20 mb-6 bg-transparent rounded-xl backdrop-blur">
             <h2 className="text-3xl backdrop-blur rounded-xl">Projects</h2>
           </div>
           <div className="h-auto space-y-2 px-6">
-            <ExperienceCard
-              date={"December 2023 - Present"}
-              title={"Founder / Full-Stack Developer"}
-              company={"nSquare.dev"}
-              responsibilities={responsibilitiesJob1}
-              techStack={techJob1}
-            />
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={index}
+                title={project.title}
+                date={project.date}
+                desc={project.desc}
+                picUrl={project.picUrl}
+                responsibilities={project.responsibilies}
+                techStack={project.techStack}
+              />
+            ))}
           </div>
         </section>
       </div>

@@ -16,37 +16,93 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "./ui/textarea";
+import { useState } from "react";
+import { Icons } from "./Icons";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { RecaptchaResponse } from "@/app/api/recaptcha/route";
 
 const FormSchema = z.object({
-  name: z.string().min(2, {
+  fullName: z.string().min(2, {
     message: "Name must be at least 2 characters.",
   }),
   email: z.string().email({ message: "Invalid email address" }),
-  message: z.string().max(200, {
-    message: "Message must be lest than 200 characters.",
-  }),
+  message: z
+    .string()
+    .max(200, {
+      message: "Message must be less than 200 characters.",
+    })
+    .min(10, {
+      message: "Message must be more than 10 characters.",
+    }),
 });
 
 const ContactForm = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      name: "",
+      fullName: "",
       email: "",
       message: "",
     },
+    reValidateMode: "onBlur",
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+  const verifyWithRecaptcha = async () => {
+    if (!executeRecaptcha) {
+      return { success: false, message: "Recaptcha not available" };
+    }
+
+    const responseToken = await executeRecaptcha("inquirySubmit");
+    const res = await fetch("/api/recaptcha", {
+      method: "POST",
+      body: JSON.stringify({ responseToken }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+    const result = await res.json();
+
+    return result as RecaptchaResponse;
+  };
+
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    try {
+      const verified = await verifyWithRecaptcha();
+      if (!verified.success) {
+        throw new Error(verified.message);
+      }
+      setIsLoading(true);
+      const res = await fetch("/api/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify(data),
+      });
+
+      if (res.status !== 200) {
+        throw new Error(`Response status: ${res.status}`);
+      }
+      const result = await res.json();
+      console.log(result);
+      toast({
+        title: "Inquiry Submitted",
+        description: result.message,
+      });
+      form.reset();
+      setIsLoading(false);
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Failed to Submit Inquiry",
+        description: (error as Error).message,
+      });
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -60,7 +116,7 @@ const ContactForm = () => {
           <div className="flex w-full items-start gap-4">
             <FormField
               control={form.control}
-              name="name"
+              name="fullName"
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormLabel>Name</FormLabel>
@@ -112,7 +168,13 @@ const ContactForm = () => {
             )}
           />
 
-          <Button type="submit">Submit</Button>
+          <Button
+            type="submit"
+            disabled={isLoading || !form?.formState.isValid}
+            className="min-w-16"
+          >
+            {isLoading ? <Icons.LoadingSpinner /> : "Submit"}
+          </Button>
         </form>
       </Form>
     </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import GoogleReCaptchaWrapper from "@/components/GoogleReCaptchaWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,7 +36,9 @@ export default function RootLayout({
       <body
         className={` ${inter.className} text-black antialiased dark:text-white`}
       >
-        <ThemeProvider attribute="class">{children}</ThemeProvider>
+        <GoogleReCaptchaWrapper>
+          <ThemeProvider attribute="class">{children}</ThemeProvider>
+        </GoogleReCaptchaWrapper>
       </body>
     </html>
   );

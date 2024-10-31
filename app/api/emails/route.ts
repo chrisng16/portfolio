@@ -1,5 +1,6 @@
-import { fillConfirmationEmailTemplateText, fillInquiryEmailTemplateText } from "@/lib/email.utils";
+import { fillConfirmationEmailTemplateHtml, fillConfirmationEmailTemplateText, fillInquiryEmailTemplateText } from "@/lib/email.utils";
 import nodemailer from "nodemailer";
+import { MailOptions } from "nodemailer/lib/sendmail-transport";
 
 const { MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS } = process.env;
 
@@ -7,16 +8,30 @@ export async function POST(req: Request) {
     const { fullName, email, message } = await req.json()
 
     const confirmationText = fillConfirmationEmailTemplateText(fullName)
+    const confirmationHtml = fillConfirmationEmailTemplateHtml(fullName)
     const inquiryText = fillInquiryEmailTemplateText(fullName, email, message)
 
-    const confirmationMailOptions = {
+    const confirmationMailOptions: MailOptions = {
         from: `no-reply <${MAIL_USER}>`,
         to: email,
         subject: "nSquare.dev: Inquiry Received",
-        text: confirmationText
+        text: confirmationText,
+        attachments: [
+            {
+                filename: 'LinkedInLogo.png',
+                path: 'public/images/LinkedInLogo.png',
+                cid: 'LinkedInLogo' //my mistake was putting "cid:logo@cid" here! 
+            },
+            {
+                filename: 'GitHubLogo.png',
+                path: 'public/images/GitHubLogo.png',
+                cid: 'GitHubLogo' //my mistake was putting "cid:logo@cid" here! 
+            },
+        ],
+        html: confirmationHtml
     };
 
-    const inquiryMailOptions = {
+    const inquiryMailOptions: MailOptions = {
         from: `no-reply <${MAIL_USER}>`,
         to: 'nguyen.nguyen@nsquare.dev',
         subject: `Important: nSquare.dev Inquiry Received from ${fullName}`,

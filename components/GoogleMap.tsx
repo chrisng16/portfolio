@@ -93,7 +93,7 @@ const GoogleMap = ({
   return (
     <div
       ref={mapRef}
-      className="pointer-events-none h-[40vh] w-full rounded-xl hue-rotate-180 invert dark:hue-rotate-0 dark:invert-0"
+      className="pointer-events-none h-[40vh] w-full rounded hue-rotate-180 invert dark:hue-rotate-0 dark:invert-0"
     />
   );
 };

@@ -106,7 +106,7 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="mx-auto h-auto max-h-screen w-full max-w-xl rounded-xl border border-black/20 bg-transparent p-6 shadow-lg backdrop-blur dark:border-white/20 dark:bg-black/30">
+    <div className="mx-auto h-auto max-h-screen w-full max-w-xl rounded border border-black/20 bg-transparent p-6 shadow-lg backdrop-blur dark:border-white/20 dark:bg-black/30">
       <h2 className="mx-auto text-center text-2xl md:text-3xl">Contact Form</h2>
       <Form {...form}>
         <form

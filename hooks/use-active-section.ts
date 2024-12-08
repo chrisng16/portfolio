@@ -11,7 +11,7 @@ export type Section = {
 const useActiveSection = (sections: Section[]) => {
     const [activeSection, setActiveSection] = useState<string>("");
 
-    const observers = sections.map(({ id, threshold = 0.4 }) => {
+    const observers = sections.map(({ id, threshold = 0.2 }) => {
         const { ref, inView } = useInView({ threshold });
 
         useEffect(() => {

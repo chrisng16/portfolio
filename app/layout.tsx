@@ -33,13 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={` ${inter.className} text-black antialiased dark:text-white`}
-      >
-        <GoogleReCaptchaWrapper>
+      <GoogleReCaptchaWrapper>
+        <body
+          className={` ${inter.className} text-black antialiased dark:text-white`}
+        >
           <ThemeProvider attribute="class">{children}</ThemeProvider>
-        </GoogleReCaptchaWrapper>
-      </body>
+        </body>
+      </GoogleReCaptchaWrapper>
     </html>
   );
 }

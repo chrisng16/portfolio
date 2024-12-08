@@ -14,7 +14,7 @@ const Header = ({ active }: { active: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="h-15 sticky top-0 z-20 w-full overflow-x-clip bg-transparent text-center font-leagueSpartan backdrop-blur-md dark:bg-black/30">
-      <nav className="flex items-center justify-evenly gap-4 p-2">
+      <nav className="flex items-center justify-evenly gap-4 p-2 md:px-10">
         <h1 className="flex-1 p-2 text-left font-leagueSpartan text-2xl font-semibold">
           nSquare.dev
         </h1>

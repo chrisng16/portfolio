@@ -23,7 +23,7 @@ export default function Home() {
       <Header active={activeSection} />
       <Background />
       <div className="mx-auto flex w-full">
-        <main className="z-10 w-full scroll-smooth">
+        <main className="z-0 w-full scroll-smooth">
           <div ref={observers[0].ref} className="z-10">
             <Hero />
           </div>

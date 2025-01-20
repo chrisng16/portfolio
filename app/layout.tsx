@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import GoogleReCaptchaWrapper from "@/components/GoogleReCaptchaWrapper";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +39,7 @@ export default function RootLayout({
           className={` ${inter.className} text-black antialiased dark:text-white`}
         >
           <ThemeProvider attribute="class">{children}</ThemeProvider>
+          <Analytics />
         </body>
       </GoogleReCaptchaWrapper>
     </html>

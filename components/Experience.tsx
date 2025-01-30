@@ -23,9 +23,29 @@ const responsibilitiesJob2: Array<string> = [
 
 const projects = [
   {
+    title: "Golden Valley Dental Care - Website",
+    desc: "A user-friendly, performance-optimized website for Golden Valley Dental Care, highlighting Dr. Lawrence Nguyen's 30+ years of dental experience and services offered in Rocklin, CA, using Next.js for seamless navigation and accessibility.",
+    responsibilities: [
+      "Developed a responsive website for Golden Valley Dental Care using Next.js, ensuring seamless navigation, accessibility, and performance.",
+      "Leveraged modern front-end technologies (e.g., React, Tailwind CSS) to design and implement a user-friendly interface.",
+      "Optimized site performance through code splitting, lazy loading, and image optimization to improve load times and user experience.",
+      "Collaborated with the client to integrate SEO best practices and enhance visibility for key dental services.",
+    ],
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "TailwindCSS",
+      "USPS API",
+      "reCAPTCHA v3",
+    ],
+    picUrl: "/images/gvdc.png",
+    date: "January 2025",
+    url: "https://goldenvalleydentalcare.us/",
+  },
+  {
     title: "Food Ordering App",
     desc: "Mobile-friendly restaurant app allowing users to browse menus, customize orders with add-ons, manage their cart, and make secure payments via Stripe.",
-    responsibilies: [
+    responsibilities: [
       "Developed a scalable restaurant web application using Next.js and TypeScript, focusing on reusable components and modern front-end architecture.",
       "Designed dynamic menu system supporting complex customizations, enhancing user engagement and flexibility.",
       "Integrated Stripe API for secure payment processing, enabling seamless order transactions and improving business efficiency.",
@@ -38,9 +58,9 @@ const projects = [
     url: "https://restaurant-app.nsquare.dev/",
   },
   {
-    title: "Dental Office Website",
+    title: "San Jose Dental Boutique - Website",
     desc: "Website for a local dental office with SEO strategies implemented to boost online presence.",
-    responsibilies: [
+    responsibilities: [
       "Website for a local dental office with SEO strategies implemented to boost online presence.",
       "Implemented server-side rendering (SSR) and lazy loading to optimize load times, significantly enhancing user experience and Core Web Vitals.",
       "Applied SEO best practices with structured data and optimized metadata, increasing visibility and search engine rankings.",
@@ -95,7 +115,9 @@ const Experience = () => {
         </section>
         <section id="projects" className="relative h-auto">
           <div className="sticky top-0 mb-6 mt-8 rounded bg-transparent px-6 pt-16 backdrop-blur sm:pt-24">
-            <h2 className="rounded-xl text-3xl backdrop-blur">Projects</h2>
+            <h2 className="rounded-xl text-3xl backdrop-blur">
+              Work-related Projects
+            </h2>
           </div>
           <div className="h-auto space-y-2 px-6">
             {projects.map((project, index) => (
@@ -105,7 +127,7 @@ const Experience = () => {
                 date={project.date}
                 desc={project.desc}
                 picUrl={project.picUrl}
-                responsibilities={project.responsibilies}
+                responsibilities={project.responsibilities}
                 techStack={project.techStack}
                 url={project.url}
               />

@@ -75,7 +75,7 @@ const Hero = () => {
           className="relative flex h-auto flex-col items-center sm:flex-row"
         >
           <div className="flex h-[90vh] w-screen flex-col items-center justify-center gap-4">
-            <div className="relative rounded-full border-4 border-zinc-400 size-60 bg-[url('/images/nn_avatar.png')] bg-cover">
+            <div className="relative size-60 rounded-full border-4 border-zinc-400 bg-[url('/images/nn_avatar.png')] bg-cover">
               {/* <Image
                 src={"/images/avatar.jpg"}
                 width={150}
@@ -99,7 +99,7 @@ const Hero = () => {
               </p>
               <GlowingButton
                 className="mt-4 max-w-fit"
-                href={"/NguyenNguyen-SWE-Resume-v1.24.10.pdf"}
+                href={"/NguyenNguyen-SWE-Resume-v25.01.pdf"}
                 download="NguyenNguyen-SWE-Resume"
               >
                 Download Resume
